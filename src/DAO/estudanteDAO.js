@@ -14,6 +14,16 @@ module.exports = class EstudanteDao {
             });
         });
     };
+    mostrarUmEstudante(id){
+        return new Promise((resolve, reject) => {
+            const query = 'SELECT * FROM ESTUDANTES WHERE MATRICULA = (?)'
+
+            this.bd.all(query, id,(e, res) => {
+                if(e) reject(`Erro ao exibir BD ${e}`)
+                else resolve(res)
+            });
+        });
+    };
     novoEstudante(novo){
         return new Promise((resolve, reject) => {
             const query = 'INSERT INTO ESTUDANTES ( NOME, EMAIL, DATA_DE_NASCIMENTO) VALUES (?,?,?)'

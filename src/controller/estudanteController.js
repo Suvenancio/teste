@@ -15,6 +15,16 @@ module.exports = (app,bd) => {
             res.status(400).json(e)
         }
     });
+    app.get('/estudantes/:matricula', async (req, res) => {
+        const matricula = req.params.matricula;
+        try{
+            const verEstudante = await daoEstudante.mostrarUmEstudante(matricula);
+            res.status(200).json(verEstudante)
+
+        }catch(e){
+            res.status(400).json(e)
+        }
+    });
     app.post('/estudantes', async (req,res)=>{
 
         const {nome, email, data_de_nascimento} = req.body
@@ -29,7 +39,7 @@ module.exports = (app,bd) => {
     });
     app.delete('/estudantes/:matricula', async (req,res)=>{
        
-        const matricula = req.params.matricula
+        const matricula = req.params.matricula;
         
         try{
            const deletaEstudante = await daoEstudante.deletaEstudante(matricula)

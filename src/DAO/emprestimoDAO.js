@@ -14,6 +14,16 @@ module.exports = class EmprestimoDao {
             });
         });
     };
+    mostrarUmEmprestimos(id){
+        return new Promise((resolve, reject) => {
+            const query = 'SELECT * FROM EMPRESTIMOS WHERE ID = (?)'
+
+            this.bd.all(query,id, (e, res) => {
+                if(e) reject(`Erro ao exibir BD ${e}`)
+                else resolve(res)
+            });
+        });
+    };
     novoEmprestimo(novo){
         return new Promise((resolve, reject) => {
             const query = 'INSERT INTO EMPRESTIMOS (MATRICULA_ESTUDANTE, NUM_PATRIMONIO_COMPUTADOR, INICIO_EMPRESTIMO, FIM_EMPRESTIMO) VALUES (?,?,?,?)'

@@ -15,6 +15,16 @@ module.exports = (app,bd) => {
             res.status(400).json(e)
         }
     });
+    app.get('/emprestimos/:id', async (req, res) => {
+        const id = req.params.id
+        try{
+            const verEmprestimo = await daoEmprestimo.mostrarUmEmprestimos(id)
+            res.status(200).json(verEmprestimo)
+
+        }catch(e){
+            res.status(400).json(e)
+        }
+    });
     app.post('/emprestimos', async (req,res)=>{
 
         const { MATRICULA_ESTUDANTE, NUM_PATRIMONIO_COMPUTADOR, INICIO_EMPRESTIMO, FIM_EMPRESTIMO } = req.body
@@ -29,7 +39,7 @@ module.exports = (app,bd) => {
     });
     app.delete('/emprestimos/:id', async (req,res)=>{
        
-        const id = req.params.id
+        const id = req.params.id;
         
         try{
            const deletaEmprestimo = await daoEmprestimo.deletaEmprestimo(id)
@@ -40,7 +50,7 @@ module.exports = (app,bd) => {
     });
     app.put('/emprestimos/:id', async (req,res)=>{
         
-        const id = req.params.id
+        const id = req.params.id;
         const { MATRICULA_ESTUDANTE, NUM_PATRIMONIO_COMPUTADOR, INICIO_EMPRESTIMO, FIM_EMPRESTIMO } = req.body
         const infos = new Emprestimo(MATRICULA_ESTUDANTE, NUM_PATRIMONIO_COMPUTADOR, INICIO_EMPRESTIMO, FIM_EMPRESTIMO );
         

@@ -15,6 +15,18 @@ module.exports = (app,bd) => {
             res.status(400).json(e)
         }
     });
+    
+    app.get('/computadores/:numpatrimonio', async (req, res) => {
+        const numpatrimonio = req.params.numpatrimonio
+        try{
+            const verComputador = await daoComputador.mostrarUmComputador(numpatrimonio)
+
+            res.status(200).json(verComputador)
+
+        }catch(e){
+            res.status(400).json(e)
+        }
+    });
 
 
     app.post('/computadores', async (req,res)=>{

@@ -14,6 +14,16 @@ module.exports = class ComputadorDao {
             });
         });
     };
+    mostrarUmComputador(patrimonio){
+        return new Promise((resolve, reject) => {
+            const query = 'SELECT * FROM COMPUTADORES WHERE NUMERO_DO_PATRIMONIO = (?)'
+
+            this.bd.all(query,patrimonio, (e, res) => {
+                if(e) reject(`Erro ao exibir BD ${e}`)
+                else resolve(res)
+            });
+        });
+    };
     novoComputador(novo){
         return new Promise((resolve, reject) => {
             const query = 'INSERT INTO COMPUTADORES (NUMERO_DO_PATRIMONIO, ESPECIFICACAO) VALUES (?,?)'

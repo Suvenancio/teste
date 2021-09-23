@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 1000;
 
 const bd = require('./infra/sqlite_bd');
 const cors = require('cors');

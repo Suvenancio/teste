@@ -13,7 +13,9 @@ CREATE TABLE IF NOT EXISTS "ESTUDANTES" (
 const ADD_ESTUDANTES_DATA = `
 INSERT INTO ESTUDANTES (NOME, EMAIL, DATA_DE_NASCIMENTO)
 VALUES 
-    ('Suellen Venâncio', 'venanciosuh@gmail.com', '14-12-1993')
+    ('Suellen Venâncio', 'venanciosuh@gmail.com', '1993-12-14'),
+    ('Silvana Xavier', 'sil@gmail.com', '1990-10-01'),
+    ('Artur Gomes', 'artur@gmail.com', '1991-11-11')
 `;
 
 const COMPUTADORES_SCHEMA = `
@@ -25,7 +27,9 @@ CREATE TABLE IF NOT EXISTS "COMPUTADORES" (
 const ADD_COMPUTADORES_DATA = `
 INSERT INTO COMPUTADORES (NUMERO_DO_PATRIMONIO, ESPECIFICACAO)
 VALUES 
-    (123, '4gb, 1tb')
+    (123, 'Dell, 8gb, 1tb'),
+    (124, 'Acer, 4gb, 1tb'),
+    (125, 'Samsumg, 48gb, 1tb')
 `;
 
 const EMPRESTIMOS_SCHEMA = `
@@ -42,7 +46,9 @@ CREATE TABLE IF NOT EXISTS EMPRESTIMOS (
 const ADD_EMPRESTIMOS_DATA = `
 INSERT INTO EMPRESTIMOS (MATRICULA_ESTUDANTE, NUM_PATRIMONIO_COMPUTADOR,INICIO_EMPRESTIMO, FIM_EMPRESTIMO)
 VALUES 
-    ( 1, 123,'15-03-2021', '01-09-2021')
+    ( 1, 123,'2021-10-01', '2021-12-01'),
+    ( 2, 124,'2021-05-03-', '2021-09-09'),
+    ( 3, 125,'2021-04-01', '2021-09-01')
 `;
 
 
